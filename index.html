@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki de Engenharia</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+        nav { background: #34495e; padding: 10px; }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav li { margin: 0 15px; }
+        nav a { color: white; text-decoration: none; padding: 10px; border-radius: 5px; transition: background 0.3s; }
+        nav a:hover { background: #1abc9c; }
+        main { max-width: 1200px; margin: 20px auto; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .tutorial { border: 1px solid #ddd; margin: 20px 0; padding: 20px; border-radius: 8px; background: #fafafa; }
+        .tutorial h3 { color: #2c3e50; margin-top: 0; }
+        .buttons { display: flex; gap: 10px; margin-top: 20px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        .edit-btn { background: #3498db; color: white; }
+        .edit-btn:hover { background: #2980b9; }
+        .save-btn { background: #27ae60; color: white; }
+        .save-btn:hover { background: #229954; }
+        .cancel-btn { background: #e74c3c; color: white; }
+        .cancel-btn:hover { background: #c0392b; }
+        .edit-mode textarea { width: 100%; height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: monospace; }
+        footer { text-align: center; padding: 20px; color: #7f8c8d; }
+        @media (max-width: 768px) { nav ul { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wiki de Engenharia</h1>
+        <p>Tutoriais e tópicos de engenharia civil e projetos</p>
+    </header>
+    <nav>
+        <ul id="menu">
+            <li><a href="#home" onclick="showPage('home')">Início</a></li>
+            <li><a href="#projeto-civil" onclick="showPage('projeto-civil')">Projeto Civil</a></li>
+            <li><a href="#projeto-eletrico" onclick="showPage('projeto-eletrico')">Projeto Elétrico</a></li>
+            <li><a href="#projeto-estrutural" onclick="showPage('projeto-estrutural')">Projeto Estrutural</a></li>
+            <li><a href="#hidraulica" onclick="showPage('hidraulica')">Hidráulica</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="home" class="page active">
+            <h2>Bem-vindo à Wiki de Engenharia</h2>
+            <p>Esta é uma wiki simples para organizar tutoriais de engenharia. Clique nos tópicos no menu para ver/editar conteúdos.</p>
+            <p>Para adicionar novos tópicos, edite o arquivo <code>index.html</code> e adicione novas seções no menu e conteúdo.</p>
+        </div>
+        <div id="projeto-civil" class="page">
+            <div class="tutorial" data-id="civil1">
+                <h3>Vincular Projeto Civil ao Projeto EL/UI/UTR</h3>
+                <div class="content">Descrição do tutorial baseado na imagem: Para vincular elementos do projeto civil, selecione os elementos no monitor, clique em "Link" e escolha o projeto de destino (EL/UI/UTR). Use Copy/Monitor para coordenar mudanças.[edit]</div>
+                <div class="buttons" style="display:none;">
+                    <button class="edit-btn" onclick="editTutorial(this)">Editar</button>
+                </div>
+                <textarea class="edit-content" style="display:none;"></textarea>
+            </div>
+            <div class="tutorial" data-id="civil2">
+                <h3>Copy/Monitor Batch</h3>
+                <div class="content">Use Copy/Monitor em lote para sincronizar elementos entre projetos. Selecione múltiplos elementos e aplique as alterações.[edit]</div>
+                <div class="buttons" style="display:none;">
+                    <button class="edit-btn" onclick="editTutorial(this)">Editar</button>
+                </div>
+                <textarea class="edit-content" style="display:none;"></textarea>
+            </div>
+        </div>
+        <div id="projeto-eletrico" class="page">
+            <div class="tutorial" data-id="eletrico1">
+                <h3>Configuração de Painéis Elétricos</h3>
+                <div class="content">Tutorial sobre configuração de painéis elétricos em projetos integrados. Adicione seu conteúdo aqui.[edit]</div>
+                <div class="buttons" style="display:none;">
+                    <button class="edit-btn" onclick="editTutorial(this)">Editar</button>
+                </div>
+                <textarea class="edit-content" style="display:none;"></textarea>
+            </div>
+        </div>
+        <div id="projeto-estrutural" class="page">
+            <div class="tutorial" data-id="estrutural1">
+                <h3>Cálculo de Lajes</h3>
+                <div class="content">Passo a passo para cálculo de lajes em projetos estruturais. Edite para adicionar fórmulas e exemplos.[edit]</div>
+                <div class="buttons" style="display:none;">
+                    <button class="edit-btn" onclick="editTutorial(this)">Editar</button>
+                </div>
+                <textarea class="edit-content" style="display:none;"></textarea>
+            </div>
+        </div>
+        <div id="hidraulica" class="page">
+            <div class="tutorial" data-id="hidraulica1">
+                <h3>Dimensionamento de Tubulações</h3>
+                <div class="content">Como dimensionar tubulações hidráulicas. Preencha com seus tutoriais.[edit]</div>
+                <div class="buttons" style="display:none;">
+                    <button class="edit-btn" onclick="editTutorial(this)">Editar</button>
+                </div>
+                <textarea class="edit-content" style="display:none;"></textarea>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Wiki de Engenharia - Fácil de editar e expandir</p>
+    </footer>
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+            const tutorials = document.querySelectorAll('.tutorial');
+            tutorials.forEach(t => {
+                const content = t.querySelector('.content');
+                const editArea = t.querySelector('.edit-content');
+                const buttons = t.querySelector('.buttons');
+                editArea.value = content.innerHTML.replace('[edit]', '');
+                content.addEventListener('click', () => {
+                    if (content.textContent.includes('[edit]')) {
+                        editTutorial(content.parentElement.querySelector('.edit-btn'));
+                    }
+                });
+            });
+        });
+        function editTutorial(btn) {
+            const tutorial = btn.closest('.tutorial');
+            const content = tutorial.querySelector('.content');
+            const editArea = tutorial.querySelector('.edit-content');
+            const buttons = tutorial.querySelector('.buttons');
+            content.style.display = 'none';
+            editArea.style.display = 'block';
+            buttons.innerHTML = `
+                <button class="save-btn" onclick="saveTutorial(this)">Salvar</button>
+                <button class="cancel-btn" onclick="cancelEdit(this)">Cancelar</button>
+            `;
+            editArea.focus();
+        }
+        function saveTutorial(btn) {
+            const tutorial = btn.closest('.tutorial');
+            const content = tutorial.querySelector('.content');
+            const editArea = tutorial.querySelector('.edit-content');
+            content.innerHTML = editArea.value + ' [edit]';
+            content.style.display = 'block';
+            editArea.style.display = 'none';
+            const origButtons = tutorial.querySelector('.buttons');
+            origButtons.innerHTML = '<button class="edit-btn" onclick="editTutorial(this)">Editar</button>';
+            origButtons.style.display = 'flex';
+        }
+        function cancelEdit(btn) {
+            const tutorial = btn.closest('.tutorial');
+            const content = tutorial.querySelector('.content');
+            const editArea = tutorial.querySelector('.edit-content');
+            const origButtons = tutorial.querySelector('.buttons');
+            content.style.display = 'block';
+            editArea.style.display = 'none';
+            origButtons.innerHTML = '<button class="edit-btn" onclick="editTutorial(this)">Editar</button>';
+            origButtons.style.display = 'flex';
+        }
+        // Adiciona active style
+        const style = document.createElement('style');
+        style.textContent = `
+            .page { display: none; }
+            .page.active { display: block; }
+            .tutorial .content { cursor: pointer; min-height: 50px; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
